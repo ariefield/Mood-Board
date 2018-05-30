@@ -1,0 +1,18 @@
+<!-- <img src="D:\Coding\Moody\src\assets"></img> -->
+<!-- <style>
+        .grid{
+            width: {{sideLength}};
+	        height: {{sideLength}};
+        }
+</style> -->
+
+<div class="main-container parent-div">
+    <div class="grid-container child-div">
+        <!-- <div *ngFor="let panel of panels" [ngStyle]="{ 'width': sideLength + 'px', 'height': sideLength + 'px', 'border-radius': '4px', 'display': 'block', 'border': '1px solid #4E4E4E', 'margin': '4px', 'display': 'inline-flex' }"></div> -->
+        <!-- <div *ngFor="let panel of panels" (click)="setColor(panel, panel.colour)" [ngStyle]="{ 'width': sideLength + 'px', 'height': sideLength + 'px'}" class="grid"></div> -->
+        <!-- <div class="grid" *ngFor="let panel of panels">{{panel.content}}</div> -->
+        <div *ngFor="let panel of panels" (click)="setRandomColor(panel)" class="grid" [ngStyle]="{ 'width': sideLength + 'px', 'height': sideLength + 'px', 'background-color': panel.colour }" >
+        </div>
+        <!-- <div class="grid" [ngStyle]="{ 'width': sideLength + 'px', 'height': sideLength + 'px' }" *ngFor="let panel of panels">{{panel.content}}</div> -->
+    </div>
+</div>
