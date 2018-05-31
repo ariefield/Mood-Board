@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Panel } from '../panel'
 
 @Component({
-  selector: 'app-panels',
-  templateUrl: './panels.component.html',
-  styleUrls: ['./panels.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class PanelsComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   // Declare types here
   panels = [];
   sideLength: number;
