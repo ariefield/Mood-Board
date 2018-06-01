@@ -72,11 +72,6 @@ export class DashboardComponent implements OnInit {
     panel.colour = this.getRandomColor();
   }
 
-  public beginDragging( panel:Panel )
-  {
-    this.selectedPanel = panel;
-  }
-
   public dragReleased( panel:Panel )
   {
     if ( panel == this.selectedPanel )
@@ -86,6 +81,7 @@ export class DashboardComponent implements OnInit {
     else
     {
       this.swapPanels(panel, this.selectedPanel)
+      this.selectedPanel = null;
     }
   }
 
