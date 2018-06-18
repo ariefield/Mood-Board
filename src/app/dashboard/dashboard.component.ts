@@ -9,12 +9,15 @@ import { Panel } from '../panel'
 export class DashboardComponent implements OnInit {
 
   //Constants
-  dashboardWidth = 800;
-  dashBoardHeight = 600;
-  sideLength = 200;
+  dashboardWidth:number = 800;
+  dashBoardHeight:number = 600;
+  sideLength:number = 200;
   //Variables
-  panels = [];
-  selectedPanel;
+  dragStatus:string = "Start";
+  dragging:boolean = false;
+  selectedPanel:Panel;
+  panels:Panel[] = [];
+  
 
   constructor() {
    }
@@ -72,16 +75,29 @@ export class DashboardComponent implements OnInit {
     panel.colour = this.getRandomColor();
   }
 
-  public dragReleased( panel:Panel )
+  public onDragStart( panel:Panel ) 
   {
-    if ( panel == this.selectedPanel )
+    this.selectedPanel = panel;
+    this.dragging = true;
+    this.dragStatus = "started";
+  }
+
+  public onDragOver( panel:Panel ) 
+  {
+    event.preventDefault();
+  }
+
+  public onDragEnd()
+  {
+      this.dragging = false;
+  }
+
+  public onDragDrop( panel:Panel ) 
+  {
+    this.dragStatus = "ended on " + panel.id;
+    if ( panel != this.selectedPanel )
     {
-      this.selectedPanel = null;
-    }
-    else
-    {
-      this.swapPanels(panel, this.selectedPanel)
-      this.selectedPanel = null;
+      this.swapPanels(panel, this.selectedPanel);
     }
   }
 

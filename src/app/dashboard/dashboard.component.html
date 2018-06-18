@@ -8,13 +8,19 @@
 
 <div class="main-container parent-div">
     <div class="grid-container child-div" [ngStyle]="{ 'width': dashboardWidth + 'px', 'height': dashboardHeight + 'px' }">
-        <div class="grid" *ngFor="let panel of panels" (mouseenter)="panel.mouseWithin=true" (mouseleave)="panel.mouseWithin=false" (mousedown)="selectedPanel = panel;" (mouseup)="dragReleased(panel)" (click)="setRandomColor(panel)" [ngStyle]="{ 'width': sideLength + 'px', 'height': sideLength + 'px', 'left': panel.left + 'px', 'top': panel.top + 'px', 'background-color': panel.colour }" >
-        <!-- {{panel.id}} {{panel.left}} {{panel.top}} {{panel.mouseWithin}} -->
+        <div *ngFor="let panel of panels" id="{{panel.id}}" class="grid"  [ngStyle]="{ 'width': sideLength + 'px', 'height': sideLength + 'px',
+        'left': panel.left + 'px', 'top': panel.top + 'px', 'background-color': panel.colour }" 
+        draggable="true" (dragstart)="onDragStart(panel)" (dragover)="onDragOver(panel)"
+        (dragend)="onDragEnd()" (drop)="onDragDrop(panel)" (click)="setRandomColor(panel)" >
+        {{panel.id}} {{panel.left}} {{panel.top}}
         </div>
-    </div>
+    </div> 
 </div>
+
 <!-- DEBUGGING -->
-<!-- {{selectedPanel}} -->
+{{selectedPanel.id}}
+{{dragStatus}}
+{{dragging ? 'True' : 'False'}}
 
 <!-- OLD TESTS -->
 <!-- <div *ngFor="let panel of dashboard" [ngStyle]="{ 'width': sideLength + 'px', 'height': sideLength + 'px', 'border-radius': '4px', 'display': 'block', 'border': '1px solid #4E4E4E', 'margin': '4px', 'display': 'inline-flex' }"></div> -->
